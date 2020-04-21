@@ -1,12 +1,12 @@
 import React from "react";
 
-import classes from "./Tom.module.css";
+import classes from "./Tomdroid.module.css";
 
-const tom = () => {
+const tomdroid = () => {
   return (
-    <div className={classes.Tom}>
+    <div className={classes.Tomdroid}>
       <p>I Am Tom</p>
     </div>
   );
 };
-export default tom;
+export default tomdroid;
