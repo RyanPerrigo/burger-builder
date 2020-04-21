@@ -12,7 +12,7 @@ class BurgerBuilder extends Component {
     // }
 
     state = {
-        ig: {
+        ingredients: {
             salad: 1,
             bacon: 1,
             cheese: 2,
@@ -22,7 +22,7 @@ class BurgerBuilder extends Component {
     render () {
         return(
             <Auxil>
-                <Burger ingredients={this.state.ig}/>
+                <Burger ingredients={this.state.ingredients}/>
                 <div>Build Controls</div>
 
             </Auxil>
