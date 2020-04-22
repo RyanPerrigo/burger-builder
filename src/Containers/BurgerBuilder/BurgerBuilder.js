@@ -3,6 +3,9 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
 import Auxil from '../../HOC/Auxil';
+import Model from'../../components/UI/Model/Model';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+
 
 const INGREDIENT_PRICES ={
         salad: 0.5,
@@ -26,7 +29,8 @@ class BurgerBuilder extends Component {
             meat: 0
         },
         totalPrice: 4,
-        canBuy: false
+        canBuy: false,
+        buying: false
         }
 
         updatePurchaseState (ingredients) {
@@ -64,7 +68,12 @@ class BurgerBuilder extends Component {
         const newPrice = oldPrice - priceDeduction;
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients})
         this.updatePurchaseState(updatedIngredients);
-    }
+    };
+
+    purchaseHandler = (props) => {
+        return(
+        this.setState({buying: true})
+        )}
 
 
     render () {
@@ -74,15 +83,20 @@ class BurgerBuilder extends Component {
             for (let key in disabledInfo) {
                 disabledInfo[key] = disabledInfo[key] <=0
             }
+
         return(
             <Auxil>
+                <Model show={this.state.buying}>
+                    <OrderSummary ingredients={this.state.ingredients}/>
+                </Model>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
                 ingredientAdded={this.addIngredientHandler}
                 ingredientRemoved={this.removeIngredientHandler}
                 disabled={disabledInfo}
                 canBuy={this.state.canBuy}
-                price={this.state.totalPrice}/>
+                price={this.state.totalPrice}
+                ordered={this.purchaseHandler}/>
 
             </Auxil>
         );
