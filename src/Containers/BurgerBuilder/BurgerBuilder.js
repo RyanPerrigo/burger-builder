@@ -74,6 +74,9 @@ class BurgerBuilder extends Component {
         return(
         this.setState({buying: true})
         )}
+    purchaseCancelHandler = () => {
+        this.setState({buying:false});
+    }
 
 
     render () {
@@ -86,8 +89,11 @@ class BurgerBuilder extends Component {
 
         return(
             <Auxil>
-                <Model show={this.state.buying}>
-                    <OrderSummary ingredients={this.state.ingredients}/>
+                <Model 
+                show={this.state.buying}
+                modelClosed={this.purchaseCancelHandler}>
+                    <OrderSummary ingredients={this.state.ingredients}
+                    />
                 </Model>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
