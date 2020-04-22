@@ -35,13 +35,13 @@
 }
 
 .BuildControl .Less {
-  background-color:aqua;
+  background-color:red;
   color: white;
 }
 
 .BuildControl .More {
-  background-color: #8f5e1e;
-  color: white;
+  background-color: lightgreen;
+  color: rgb(5, 1, 1);
 }
 
 .BuildControl .Less:hover,
