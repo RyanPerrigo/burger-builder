@@ -3,14 +3,21 @@ import React from 'react';
 import classes from './BurgerIngredient/Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
-// importing state of ingredients from burger builder into Burger component
+// importing state = ingredients from burger builder into Burger component to handle logic
 
 const burger = (props) => {
-    const transformedIngredients = Object.keys(props.ingredients).map(igKey => {
+    let transformedIngredients = Object.keys
+    /* .keys turns object into an array*/ /*passing ingredients into the array and looping through with .map */ (props.ingredients).map(igKey => {
         return [...Array(props.ingredients[igKey])].map((_,i) =>{
            return <BurgerIngredient key ={igKey + i} type ={igKey} />;
-        });
-    });
+        } );
+    } )
+    .reduce((arr, el) => {
+        return arr.concat(el)
+    }, []);
+    if (transformedIngredients.length ===0) {
+        transformedIngredients = <p> Please Choose ingredients to Start your burger</p>
+    }
     
     return (
         <div className={classes.Burger}>
