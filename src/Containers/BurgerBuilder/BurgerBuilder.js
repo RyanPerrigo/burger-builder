@@ -77,6 +77,9 @@ class BurgerBuilder extends Component {
     purchaseCancelHandler = () => {
         this.setState({buying:false});
     }
+    purchaseContinueHandler = () => {
+        alert('You Continue')
+    }
 
 
     render () {
@@ -89,10 +92,13 @@ class BurgerBuilder extends Component {
 
         return(
             <Auxil>
-                <Model 
-                show={this.state.buying}
-                modelClosed={this.purchaseCancelHandler}>
-                    <OrderSummary ingredients={this.state.ingredients}
+                <Model show={this.state.buying} modelClosed={this.purchaseCancelHandler}>
+                    {/* purchasecancel and continue are defined methods in this file passed onto OrderSummary via props */}
+                    <OrderSummary 
+                        ingredients={this.state.ingredients}
+                        purchaseCanceled={this.purchaseCancelHandler}
+                        purchaseContinued={this.purchaseContinueHandler}
+                        price={this.state.totalPrice.toFixed(2)}
                     />
                 </Model>
                 <Burger ingredients={this.state.ingredients}/>

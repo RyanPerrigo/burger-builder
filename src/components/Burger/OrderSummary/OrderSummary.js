@@ -1,6 +1,6 @@
 import React from 'react';
-import Auxil from '../../../HOC/Auxil'
-
+import Auxil from '../../../HOC/Auxil';
+import Button from '../../UI/Button/Button';
 
 
 const orderSummary = (props) => {
@@ -17,8 +17,14 @@ const orderSummary = (props) => {
             <ul>
                 {ingredientSummary}
             </ul>
+            <p><strong>Total Price:{props.price}</strong></p>
             <p>Continue to Checkout?</p>
+            {/* type gives CSS to buttons
+            props defined in Burger builder and passed in */}
+            <Button btnType='Success'clicked={props.purchaseContinued}>Continue </Button>
+            <Button btnType='Danger' clicked={props.purchaseCanceled}>CANCEL</Button>
         </Auxil>
+    
     )
 };
 
