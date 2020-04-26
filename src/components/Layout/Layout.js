@@ -6,11 +6,15 @@ import classes from './Layout.module.css';
 
 class Layout extends Component {
 state={
-    showSideDrawer: true
+    showSideDrawer: false
 }
-    
+sideDrawerClosedHandler = () => {
+    this.setState({showSideDrawer: false});
+}    
 toggleSideDrawerHandler = () => {
-    this.setState({showSideDrawer:false});
+    this.setState((prevState) => {
+       return {showSideDrawer:!prevState.showSideDrawer}
+    });
 }
     render () {
 
@@ -19,8 +23,8 @@ toggleSideDrawerHandler = () => {
 
     <>
         <div>
-            <Toolbar/>
-            <SideDrawer open={this.state.showSideDrawer} closed={this.toggleSideDrawerHandler}/>
+            <Toolbar drawerToggleClicked={this.toggleSideDrawerHandler}/>
+            <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerClosedHandler}/>
         </div>
         <main className={classes.Content}>
             {this.props.children}
