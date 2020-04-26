@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-
-import Auxil from '../../HOC/Auxil';
 import Model from'../../components/UI/Model/Model';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
@@ -91,7 +89,7 @@ class BurgerBuilder extends Component {
             }
 
         return(
-            <Auxil>
+            <>
                 <Model show={this.state.buying} modelClosed={this.purchaseCancelHandler}>
                     {/* purchasecancel and continue are defined methods in this file passed onto OrderSummary via props */}
                     <OrderSummary 
@@ -110,7 +108,7 @@ class BurgerBuilder extends Component {
                 price={this.state.totalPrice}
                 ordered={this.purchaseHandler}/>
 
-            </Auxil>
+            </>
         );
     }
 }

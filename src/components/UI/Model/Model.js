@@ -1,5 +1,4 @@
 import React from 'react'
-
 import classes from './Model.module.css';
 import Backdrop from './Backdrop/Backdrop';
 
@@ -17,4 +16,4 @@ const model = (props) => (
     </>
 );
 
-export default model
+export default React.memo(model)

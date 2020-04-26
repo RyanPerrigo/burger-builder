@@ -1,31 +1,36 @@
-import React from 'react';
-import Auxil from '../../../HOC/Auxil';
+import React, {Component} from 'react';
+
 import Button from '../../UI/Button/Button';
 
 
-const orderSummary = (props) => {
-    const ingredientSummary = Object.keys(props.ingredients).map( igKey => {
+class OrderSummary extends Component {
+    componentDidUpdate () {
+        console.log('[OrderSummary] WillUpdate');
+    }
+
+    render () { 
+    const ingredientSummary = Object.keys(this.props.ingredients).map( igKey => {
         return (
         <li key ={igKey}>
-            <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}</li>);
+            <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {this.props.ingredients[igKey]}</li>);
     } );
     
     return (
-        <Auxil>
+        <>
             <h3> Your Order</h3>
             <p>A delicious burger with the following ingredients:</p>
             <ul>
                 {ingredientSummary}
             </ul>
-            <p><strong>Total Price:{props.price}</strong></p>
+            <p><strong>Total Price:{this.props.price}</strong></p>
             <p>Continue to Checkout?</p>
             {/* type gives CSS to buttons
             props defined in Burger builder and passed in */}
-            <Button btnType='Success'clicked={props.purchaseContinued}>Continue </Button>
-            <Button btnType='Danger' clicked={props.purchaseCanceled}>CANCEL</Button>
-        </Auxil>
+            <Button btnType='Success'clicked={this.props.purchaseContinued}>Continue </Button>
+            <Button btnType='Danger' clicked={this.props.purchaseCanceled}>CANCEL</Button>
+        </>
     
-    )
+    )}
 };
 
-export default orderSummary
+export default OrderSummary
